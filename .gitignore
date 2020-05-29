@@ -1,0 +1,25 @@
+# comentário.
+.idea/
+.vscode/
+
+# comentário.
+package-lock.json
+node_modules/
+
+# comentário.
+.expo/
+web-build/
+web-report/
+
+# comentário.
+npm-debug.*
+*.iml
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# macOS
+.DS_Store
