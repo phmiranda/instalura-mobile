@@ -3,10 +3,12 @@
 .vscode/
 
 # comentário.
-package-lock.json
 node_modules/
+package-lock.json
+
 
 # comentário.
+.build/
 .expo/
 web-build/
 web-report/
