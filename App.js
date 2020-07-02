@@ -1,20 +1,41 @@
+/* importa as dependências a serem utilizadas no componente */
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {FlatList, StyleSheet} from "react-native";
+import PostComponent from "./src/component/PostComponent";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Olá, estamos iniciando o Instalura.</Text>
-      <Text>O Instalura é um clone do Instagram para estudo de React Native.</Text>
-    </View>
-  );
+class App extends React.Component{
+  constructor() {
+    super();
+    this.state = {
+      fotos: []
+    }
+  }
+
+  componentDidMount() {
+    fetch('https://instalura-api.herokuapp.com/api/public/fotos/rafael')
+        .then(response => response.json())
+        .then(json => this.setState({fotos: json}))
+  }
+
+  render() {
+    return(
+        <FlatList style={styles.container}
+          keyExtractor={item => item.id}
+          data={this.state.fotos}
+          renderItem={ ({item}) =>
+            <PostComponent foto={item}/>
+          }
+        />
+    );
+  }
 }
 
+/* define a formatação de estilos do componente */
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    marginTop:20
+  }
 });
+
+/* exporta a classe para ser reutilizada no projeto */
+export default App;
